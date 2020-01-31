@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - CameraController
+    - MovingObject
     - PlayerController
     - Rotator
     Unity.2D.Tilemap.Editor.dll:
@@ -59,6 +60,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11626}
     - Class: 114
       Script: {instanceID: 11680}
+    - Class: 114
+      Script: {instanceID: 17392}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -216,7 +219,7 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: ba7d017e3171d1970cbced635be3298c
+      Hash: 31bf5b8e2aca77c2ce689e7f6e11f7b4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -556,7 +559,14 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: f1d7d723ce60a1647c6e4350f38c9eac
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MovingObject
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main.unity
-  playerPath: C:/Users/moesa/Desktop/Tutorial-1/Tutorial 1/Build/Tutorial 1.exe
+  playerPath: C:/Users/moesa/Desktop/Tutorial-1/Tutorial 1/Challenge Build/Tutorial
+    1.exe

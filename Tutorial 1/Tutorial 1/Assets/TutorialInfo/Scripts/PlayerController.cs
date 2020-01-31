@@ -8,48 +8,76 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Text countText;
     public Text winText;
+    public Text livesText;
     private Rigidbody2D rb2d;
+    private int lives;
 
     private int count;
+
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         count = 0;
-        SetCountText ();
+        lives = 3;
+        SetLivesText();
+        SetCountText();
         winText.text = "";
-   
+
     }
 
-   void FixedUpdate()
+    void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        rb2d.AddForce (movement * speed);
-        if (Input.GetKey("escape"))
-        {
-            Application.Quit();
-        }
-            
+        rb2d.AddForce(movement * speed);
+
     }
 
-   
+
     void OnTriggerEnter2D(Collider2D other)
     {
-            if (other.gameObject.CompareTag("PickUp"))
-        {      
-            other.gameObject.SetActive (false);
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
         }
+        if (count == 12)
+        {
+            transform.position = new Vector2(117, 3);
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.SetActive(false);           
+            lives = lives - 1;
+            SetLivesText();
+            SetCountText();
+        }
+
+
+
+
     }
-            void SetCountText()
+    void SetCountText()
     {
-        countText.text = "Count: " + count.ToString ();
-        if (count >= 12)
+        countText.text = "Count: " + count.ToString();
+        
+        if (count >= 20)
         {
             winText.text = "You Win! Game created by Mohammad Saadeh!";
         }
+        if (lives == 0)
+        {
+            winText.text = "You Lose! Game created by Mohammad Saadeh!";
+            Destroy(this);
+        }
+    }
+
+    void SetLivesText()
+    {
+        livesText.text = "Lives: " + lives.ToString();
     }
 }
